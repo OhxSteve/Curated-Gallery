@@ -1,16 +1,12 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-const path = require('path')
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
-const PORT = 3000
+const PORT = 1337;
 
-app.use(express.static(path.join(__dirname, '../client/dist')))
-app.use(bodyParser.json())
-
-
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(bodyParser.json());
 
 
-
-
-app.listen(PORT, () => console.log('Listening!'))
+app.listen(PORT, () => console.log('Listening!'));
