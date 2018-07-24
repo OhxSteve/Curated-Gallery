@@ -1,13 +1,15 @@
-CREATE DATABASE Gram;
+DROP DATABASE IF EXISTS gram;
 
-USE Gram;
+CREATE DATABASE gram;
 
-CREATE TABLE Users (
-  id int NOT NULL AUTO_INCREMENT,
+USE gram;
+
+CREATE TABLE photos (
+  id INT NOT NULL AUTO_INCREMENT,
   photo varchar(100) NOT NULL,
-  user varchar(20) NOT NULL,
+  user varchar(50) NOT NULL,
   likes int NOT NULL,
-  createdOn timestamp NOT NULL DEFAULT current_timestamp,
-  product int NOT NULL
+  posted_on bigint NOT NULL,
+  product int NOT NULL,
   PRIMARY KEY (id)
 );

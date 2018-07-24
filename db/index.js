@@ -9,9 +9,15 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-// connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-//   if (error) throw error;
-//   console.log('The solution is: ', results[0].solution);
-// });
+connection.query(
+  `LOAD DATA INFILE '/tmp/shoes.csv'
+  INTO TABLE photos
+  FIELDS TERMINATED BY ','
+  LINES TERMINATED BY '\n' 
+  (photo,user,likes,posted_on,product)`, (error, results, fields) => {
+    if (error) throw error;
+    console.log(results);
+  },
+);
 
 connection.end();
