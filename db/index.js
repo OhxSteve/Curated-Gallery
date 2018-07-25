@@ -20,4 +20,16 @@ connection.query(
   },
 );
 
-connection.end();
+const getGramInfo = (id, cb) => {
+  connection.query('select * from photos where product = ?', [id], (error, results, fields) => {
+    if (error) {
+      cb(error);
+    } else {
+      cb(null, results);
+    }
+  });
+};
+
+module.exports = {
+  getGramInfo,
+};
