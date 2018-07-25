@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Photo from './Photo.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,11 @@ class App extends React.Component {
       <div>
         <h2>HOW OTHERS ARE WEARING IT</h2>
         <div>Mention @Nike on Instagram for a chance to have your look featured.</div>
+          <div className="container">
+            {this.state.pictures.map(photo => {
+              return <Photo photo={photo} />
+            })}
+          </div>
       </div>
     );
   }
