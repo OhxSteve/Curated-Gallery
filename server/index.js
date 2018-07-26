@@ -4,11 +4,12 @@ const path = require('path');
 const fs = require('fs');
 const faker = require('faker');
 const { getGramInfo } = require('../db');
+const router = express.Router();
 
 const app = express();
 const PORT = 1337;
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+
 app.use(bodyParser.json());
 
 // const out = fs.createWriteStream('/tmp/shoes.csv');
@@ -18,9 +19,14 @@ app.use(bodyParser.json());
 // records.forEach((i) => {
 //   out.write(`${i}\n`);
 // });
+app.get('/', (req, res) => {
+  res.redirect('/product/0');
+});
 
-app.get('/gram', (req, res) => {
-  getGramInfo(req.query.product, (err, data) => {
+app.use('/product/:product', express.static(path.join(__dirname, '../client/dist')));
+
+app.get('/product/:product/gram', (req, res) => {
+  getGramInfo(req.params.product, (err, data) => {
     if (err) {
       console.log(err);
     } else {
@@ -28,5 +34,6 @@ app.get('/gram', (req, res) => {
     }
   });
 });
+
 
 app.listen(PORT, () => console.log('Listening!'));

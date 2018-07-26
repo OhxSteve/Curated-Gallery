@@ -6,22 +6,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pictures: [],
-      product: 0,   
+      pictures: [],  
     };
   }
 
 
   componentDidMount() {
+    console.log(window.location.pathname)
     this.retreivePhotos();
   }
 
   retreivePhotos = () => {
-    axios.get('/gram', {
-      params: {
-        product: this.state.product,
-      }
-    })
+    let productRoute = `${window.location.pathname}gram`
+    axios.get(productRoute)
     .then((response) => {
       this.setState({
         pictures:response.data,
