@@ -12,7 +12,6 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    console.log(window.location.pathname)
     this.retreivePhotos();
   }
 
@@ -33,7 +32,7 @@ class App extends React.Component {
         <div>Mention @Nike on Instagram for a chance to have your look featured.</div>
           <div className="container">
             {this.state.pictures.map(photo => {
-              return <Photo photo={photo} />
+              return <Photo photo={photo} key={photo.id}/>
             })}
           </div>
       </div>
