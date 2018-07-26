@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const faker = require('faker');
 const { getGramInfo } = require('../db');
-const router = express.Router();
+
 
 const app = express();
 const PORT = 1337;
@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 // records.forEach((i) => {
 //   out.write(`${i}\n`);
 // });
+
 app.get('/', (req, res) => {
   res.redirect('/product/0');
 });
