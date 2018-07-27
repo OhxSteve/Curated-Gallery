@@ -9,7 +9,10 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:9.5
       - image: circleci/mysql:5.7.22
-      
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: gram
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -35,7 +38,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # seed db!
-      - run: mysql -u root  < schema.sql
+      - run: npm run reset-db
+       
       - run: npm run seed
 
       # run tests!
