@@ -37,8 +37,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-
-      - run: 'sudo apt-get install mysql-client'  
+      - run: 'sudo apt update'
+      - run: 'sudo apt install mysql-client'  
       
       # reset db! 
       - run: npm run reset-db
