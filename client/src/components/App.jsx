@@ -19,6 +19,7 @@ class App extends React.Component {
     let productRoute = `${window.location.pathname}gram`
     axios.get(productRoute)
     .then((response) => {
+      console.log(Array.isArray(response.data))
       this.setState({
         pictures:response.data,
       })

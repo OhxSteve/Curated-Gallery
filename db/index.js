@@ -37,6 +37,7 @@ const getGramInfo = (id, cb) => {
       cb(null, results);
     }
   });
+  connection.end();
 };
 
 module.exports = {
