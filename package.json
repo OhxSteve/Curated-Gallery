@@ -9,7 +9,7 @@
     "dev": "webpack -d --watch",
     "lint": "eslint",
     "seed": "node generate.js",
-    "reset-db": "mysql -u root < schema.sql"
+    "reset-db": "mysql -h 127.0.0.1 -u root < schema.sql"
   },
   "keywords": [],
   "author": "",
