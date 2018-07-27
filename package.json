@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server/index.js",
     "dev": "webpack -d --watch",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "node generate.js"
   },
   "keywords": [],
   "author": "",
