@@ -11,6 +11,4 @@ records.forEach((i) => {
   out.write(`${i}\n`);
 });
 
-setTimeout(() => {
-  seedData();
-}, 5000);
+seedData();

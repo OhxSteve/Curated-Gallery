@@ -17,7 +17,7 @@ const seedData = () => {
     },
   );
   connection.query(
-    `LOAD DATA INFILE '/tmp/shoes.csv'
+    `LOAD DATA LOCAL INFILE '/tmp/shoes.csv'
     INTO TABLE photos
     FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n' 
