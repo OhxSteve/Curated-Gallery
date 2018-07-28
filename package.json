@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --forceExit",
     "start": "nodemon server/server.js",
     "dev": "webpack -d --watch",
     "lint": "eslint",
