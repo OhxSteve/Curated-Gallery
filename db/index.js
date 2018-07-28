@@ -9,26 +9,6 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-const seedData = () => {
-  connection.query(
-    `TRUNCATE TABLE photos`, (error, results, fields) => {
-      if (error) throw error;
-      console.log(results);
-    },
-  );
-  connection.query(
-    `LOAD DATA INFILE '/tmp/shoes.csv'
-    INTO TABLE photos
-    FIELDS TERMINATED BY ','
-    LINES TERMINATED BY '\n' 
-    (photo,user,likes,posted_on,product)`, (error, results, fields) => {
-      if (error) throw error;
-      console.log(results);
-    },
-  );
-  connection.end();
-};
-
 const getGramInfo = (id, cb) => {
   connection.query('select * from photos where product = ?', [id], (error, results, fields) => {
     if (error) {
@@ -41,5 +21,5 @@ const getGramInfo = (id, cb) => {
 
 module.exports = {
   getGramInfo,
-  seedData,
+  connection,
 };

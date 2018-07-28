@@ -1,6 +1,6 @@
 const fs = require('fs');
 const faker = require('faker');
-const { seedData } = require('./db');
+const { connection } = require('./db');
 
 
 const out = fs.createWriteStream('/tmp/shoes.csv');
@@ -11,6 +11,25 @@ records.forEach((i) => {
   out.write(`${i}\n`);
 });
 
-setTimeout(() => {
-  seedData();
-}, 5000);
+
+const seedData = () => {
+  connection.query(
+    'TRUNCATE TABLE photos', (error, results, fields) => {
+      if (error) throw error;
+      console.log(results);
+    },
+  );
+  connection.query(
+    `LOAD DATA LOCAL INFILE '/tmp/shoes.csv'
+    INTO TABLE photos
+    FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n' 
+    (photo,user,likes,posted_on,product)`, (error, results, fields) => {
+      if (error) throw error;
+      console.log(results);
+    },
+  );
+  connection.end();
+};
+
+seedData();

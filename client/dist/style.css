@@ -1,3 +1,6 @@
+body{
+  font-family: "TradeGothic", "Trade Gothic", "Trade Gothic", "Trade Gothic", "TradeGothic", "Trade-Gothic", "ArialNarrow", "Arial-Narrow", "Arial Narrow", Arial, sans-serif;
+}
 .container {
   display:flex;
   justify-content: space-between;
@@ -5,6 +8,18 @@
 }
 
 .photo{
+  position:relative;
   flex:1;
   flex-basis: 50%;
+}
+
+.shop{
+  position: absolute;
+  top:40%;
+  left:30%;
+  background-color: rgba(192,192,192,0.6);
+  font-size:25px;
+  padding: 20px 32px 20px 32px;
+  border-radius: 5px;
+
 }

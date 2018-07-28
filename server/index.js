@@ -5,8 +5,6 @@ const { getGramInfo } = require('../db');
 
 
 const app = express();
-const PORT = 1337;
-
 
 app.use(bodyParser.json());
 
@@ -28,4 +26,4 @@ app.get('/product/:product/gram', (req, res) => {
 });
 
 
-app.listen(PORT, () => console.log('Listening!'));
+module.exports = app;

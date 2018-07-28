@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1532755255439" clover="3.2.0">
+  <project timestamp="1532755255439" name="All files">
+    <metrics statements="23" coveredstatements="20" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="4" elements="32" coveredelements="26" complexity="0" loc="23" ncloc="23" packages="2" files="2" classes="2">
+      <package name="db">
+        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <file name="index.js" path="/Users/steveoh/Desktop/curated-gallery/db/index.js">
+          <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="server">
+        <metrics statements="15" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <file name="index.js" path="/Users/steveoh/Desktop/curated-gallery/server/index.js">
+          <metrics statements="15" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
