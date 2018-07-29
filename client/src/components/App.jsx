@@ -1,12 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import Photo from './Photo.jsx';
+import Modal from './Modal.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pictures: [],  
+      pictures: [],
+      clicked: false,
+      photo:{},  
     };
   }
 
@@ -25,6 +28,13 @@ class App extends React.Component {
     })
   }
 
+  handleClick = (photoInfo) => {
+    this.setState({
+      clicked:!this.state.clicked,
+      photo:photoInfo
+    })
+  }
+
   render() {
     return (
       <div>
@@ -32,9 +42,12 @@ class App extends React.Component {
         <div>Mention @Nike on Instagram for a chance to have your look featured.</div>
           <div className="container">
             {this.state.pictures.map(photo => {
-              return <Photo photo={photo} key={photo.id}/>
+              return <Photo photo={photo} key={photo.id} click={this.handleClick}/>
             })}
           </div>
+          {this.state.clicked && 
+            <Modal photo={this.state.photo} />
+          }
       </div>
     );
   }

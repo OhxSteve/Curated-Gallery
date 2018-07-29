@@ -22,8 +22,8 @@ class Modal extends React.Component {
     const modalStyle = {
       backgroundColor: '#fff',
       borderRadius: 5,
-      maxWidth: 1000,
-      minHeight: 1000,
+      maxWidth: 600,
+      minHeight: 600,
       margin: '0 auto',
       padding: 30
     };
@@ -31,12 +31,10 @@ class Modal extends React.Component {
     return (
       <div className="backdrop" style={backdropStyle}>
         <div className="modal" style={modalStyle}>
-          <img src={this.props.photo} alt="shoe" />
+          <img src={this.props.photo.photo} alt="shoe" height="400" width="400" />
 
           <div className="footer">
-            <button onClick={this.props.onClose}>
-              Close
-            </button>
+
           </div>
         </div>
       </div>
