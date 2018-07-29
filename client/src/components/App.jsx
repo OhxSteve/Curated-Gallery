@@ -35,6 +35,12 @@ class App extends React.Component {
     })
   }
 
+  closeModal = () => {
+    this.setState({
+      clicked:!this.state.clicked
+    })
+  }
+
   render() {
     return (
       <div>
@@ -46,7 +52,7 @@ class App extends React.Component {
             })}
           </div>
           {this.state.clicked && 
-            <Modal photo={this.state.photo} />
+            <Modal photo={this.state.photo} close={this.closeModal} />
           }
       </div>
     );

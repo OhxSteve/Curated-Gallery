@@ -5,12 +5,11 @@ body{
   display:flex;
   justify-content: space-between;
   flex-wrap:wrap;
+  max-width:1300px;
 }
 
 .photo{
   position:relative;
-  flex:1;
-  flex-basis: 50%;
 }
 
 .shop{
