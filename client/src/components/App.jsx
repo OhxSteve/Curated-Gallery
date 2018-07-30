@@ -9,13 +9,17 @@ class App extends React.Component {
     this.state = {
       pictures: [],
       clicked: false,
-      photo:{},  
+      photo:{},
+      modal:0,
+      max:0,
     };
+
   }
 
 
   componentDidMount() {
     this.retreivePhotos();
+
   }
 
   retreivePhotos = () => {
@@ -24,14 +28,16 @@ class App extends React.Component {
     .then((response) => {
       this.setState({
         pictures:response.data,
+        max:response.data.length-1
       })
     })
   }
 
-  handleClick = (photoInfo) => {
+  handleClick = (photoID) => {
     this.setState({
+      modal:photoID,
+      photo:this.state.pictures[photoID],
       clicked:!this.state.clicked,
-      photo:photoInfo
     })
   }
 
@@ -41,18 +47,33 @@ class App extends React.Component {
     })
   }
 
+  nextModal = () => {
+    this.setState({
+      modal:this.state.modal+=1,
+      photo:this.state.pictures[this.state.modal],
+    })
+  }
+
+  previousModal = () => {
+    this.setState({
+      modal:this.state.modal-=1,
+      photo:this.state.pictures[this.state.modal],
+    })
+    console.log(this.state.modal, this.state.pictures)
+  }
+
   render() {
     return (
       <div>
         <h2>HOW OTHERS ARE WEARING IT</h2>
         <div>Mention @Nike on Instagram for a chance to have your look featured.</div>
           <div className="container">
-            {this.state.pictures.map(photo => {
-              return <Photo photo={photo} key={photo.id} click={this.handleClick}/>
+            {this.state.pictures.map((photo, i) => {
+              return <Photo photo={photo} key={photo.id} click={this.handleClick} id={i}/>
             })}
           </div>
           {this.state.clicked && 
-            <Modal photo={this.state.photo} close={this.closeModal} />
+            <Modal photo={this.state.photo} close={this.closeModal} next={this.nextModal} previous={this.previousModal} max={this.state.max} modal={this.state.modal} />
           }
       </div>
     );

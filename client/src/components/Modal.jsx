@@ -17,14 +17,13 @@ class Modal extends React.Component {
       right: 0,
       backgroundColor: 'rgba(0,0,0,0.3)',
       padding: 50,
-      maxWidth:1300
     };
 
     const modalStyle = {
       backgroundColor: '#fff',
       borderRadius: 5,
-      maxWidth: 600,
-      minHeight: 600,
+      maxWidth: 1080,
+      minHeight: 720,
       margin: '0 auto',
       padding: 30
     };
@@ -32,14 +31,26 @@ class Modal extends React.Component {
     return (
       <div className="backdrop" style={backdropStyle}>
         <div className="modal" style={modalStyle}>
-          <img src={this.props.photo.photo} alt="shoe" height="400" width="400" />
+          <img src={this.props.photo.photo} alt="shoe" height="612" width="612" />
           <div>{this.props.photo.user}</div>
           <div>{this.props.photo.posted_on}</div>
 
           <div className="footer">
-            <button onClick={this.props.close}>
+            {this.props.modal !== 0 && (
+            <button type="button" onClick={this.props.previous}>
+            Previous
+            </button>
+            )}
+            {this.props.modal !== this.props.max && (
+            <button type="button" onClick={this.props.next}>
+            Next
+            </button>
+            )}
+            <br />
+            <button type="button" onClick={this.props.close}>
               Close
             </button>
+
           </div>
         </div>
       </div>
