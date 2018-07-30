@@ -32,6 +32,8 @@ class Modal extends React.Component {
       <div className="backdrop" style={backdropStyle}>
         <div className="modal" style={modalStyle}>
           <img src={this.props.photo.photo} alt="shoe" height="612" width="612" />
+          <br />
+          <img src={this.props.photo.user_pic} alt="user" height="50" width="50" />
           <div>{this.props.photo.user}</div>
           <div>{this.props.photo.posted_on}</div>
 
