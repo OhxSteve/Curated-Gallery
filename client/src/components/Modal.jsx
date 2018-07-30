@@ -22,8 +22,8 @@ class Modal extends React.Component {
     const modalStyle = {
       backgroundColor: '#fff',
       borderRadius: 5,
-      maxWidth: 1080,
-      minHeight: 720,
+      maxWidth: 720,
+      minHeight: 480,
       margin: '0 auto',
       padding: 30
     };
@@ -31,7 +31,7 @@ class Modal extends React.Component {
     return (
       <div className="backdrop" style={backdropStyle}>
         <div className="modal" style={modalStyle}>
-          <img src={this.props.photo.photo} alt="shoe" height="612" width="612" />
+          <img src={this.props.photo.photo} alt="shoe" height="400" width="400" />
           <br />
           <img src={this.props.photo.user_pic} alt="user" height="50" width="50" />
           <div>{this.props.photo.user}</div>
