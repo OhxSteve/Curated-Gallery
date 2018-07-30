@@ -12,6 +12,7 @@ class App extends React.Component {
       photo:{},
       modal:0,
       max:0,
+      limit:2,  
     };
 
   }
@@ -62,20 +63,39 @@ class App extends React.Component {
     console.log(this.state.modal, this.state.pictures)
   }
 
+  onLoadMore = () => {
+    this.setState({
+      limit: this.state.pictures.length
+    })
+  }
+
+  onHide = () => {
+    this.setState({
+      limit: 2
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>HOW OTHERS ARE WEARING IT</h2>
         <div>Mention @Nike on Instagram for a chance to have your look featured.</div>
           <div className="container">
-            {this.state.pictures.map((photo, i) => {
-              return <Photo photo={photo} key={photo.id} click={this.handleClick} id={i}/>
-            })}
+          {this.state.pictures.slice(0,this.state.limit).map((photo, i) => {
+            return <Photo photo={photo} key={photo.id} click={this.handleClick} id={i}/>
+          })}
           </div>
+        <br/>
+          {this.state.limit === 2 &&
+          <div onClick={this.onLoadMore}>Load More ({this.state.pictures.length - this.state.limit})</div>
+          }
+          {this.state.limit === this.state.pictures.length &&
+          <div onClick={this.onHide}>Hide</div>
+          }
           {this.state.clicked && 
             <Modal photo={this.state.photo} close={this.closeModal} next={this.nextModal} previous={this.previousModal} max={this.state.max} modal={this.state.modal} />
           }
-      </div>
+          </div>
     );
   }
 }
