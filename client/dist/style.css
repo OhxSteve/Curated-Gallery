@@ -22,3 +22,36 @@ body{
   border-radius: 5px;
 
 }
+
+/* .arrow{
+  border: solid black;
+  border-width: 0 5px 5px 0;
+  height:50px;
+  width:50px;
+  display: inline-block;
+  padding: 3px;
+} */
+
+.right {
+  position: absolute;
+  top:40%;
+  left:83%;
+  font-size: 100px;
+  color: aliceblue
+}
+
+.left {
+  position: absolute;
+  top:40%;
+  left:16%;
+  font-size: 100px;
+  color: aliceblue
+}
+
+.close {
+  position: absolute;
+  top:10%;
+  left:78%;
+  font-size: 20px;
+
+}

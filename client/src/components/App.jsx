@@ -14,13 +14,10 @@ class App extends React.Component {
       max:0,
       limit:2,  
     };
-
   }
-
 
   componentDidMount() {
     this.retreivePhotos();
-
   }
 
   retreivePhotos = () => {
