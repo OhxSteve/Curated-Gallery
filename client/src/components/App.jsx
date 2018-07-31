@@ -10,17 +10,14 @@ class App extends React.Component {
       pictures: [],
       clicked: false,
       photo:{},
-      modal:0,
+      modalPosition:0,
       max:0,
       limit:2,  
     };
-
   }
-
 
   componentDidMount() {
     this.retreivePhotos();
-
   }
 
   retreivePhotos = () => {
@@ -36,7 +33,7 @@ class App extends React.Component {
 
   handleClick = (photoID) => {
     this.setState({
-      modal:photoID,
+      modalPosition:photoID,
       photo:this.state.pictures[photoID],
       clicked:!this.state.clicked,
     })
@@ -49,18 +46,21 @@ class App extends React.Component {
   }
 
   nextModal = () => {
+    let modalPosition = this.state.modalPosition + 1;
+    let photo = this.state.pictures[modalPosition];
     this.setState({
-      modal:this.state.modal+=1,
-      photo:this.state.pictures[this.state.modal],
+      modalPosition,
+      photo,
     })
   }
 
   previousModal = () => {
+    let modalPosition = this.state.modalPosition - 1;
+    let photo = this.state.pictures[modalPosition];
     this.setState({
-      modal:this.state.modal-=1,
-      photo:this.state.pictures[this.state.modal],
+      modalPosition,
+      photo,
     })
-    console.log(this.state.modal, this.state.pictures)
   }
 
   onLoadMore = () => {
@@ -76,26 +76,39 @@ class App extends React.Component {
   }
 
   render() {
+
+    const containerStyle = {
+      display:'flex',
+      justifyContent: 'space-between',
+      flexWrap:'wrap',
+      maxWidth:'820px',
+    };
+
+    const appStyle = {
+        fontFamily: 'TradeGothic, Trade Gothic, Trade Gothic, Trade Gothic, TradeGothic, Trade-Gothic, ArialNarrow, Arial-Narrow, Arial Narrow, Arial, sans-serif',   
+    };
+
     return (
-      <div>
+      <div className='app' style={appStyle}>
         <h2>HOW OTHERS ARE WEARING IT</h2>
-        <div>Mention @Nike on Instagram for a chance to have your look featured.</div>
-          <div className="container">
-          {this.state.pictures.slice(0,this.state.limit).map((photo, i) => {
-            return <Photo photo={photo} key={photo.id} click={this.handleClick} id={i}/>
-          })}
-          </div>
+        <p>Mention @Nike on Instagram for a chance to have your look featured.</p>
+        <br/>
+        <div className='container' style={containerStyle}>
+        {this.state.pictures.slice(0,this.state.limit).map((photo, i) => {
+          return <Photo photo={photo} key={photo.id} click={this.handleClick} id={i}/>
+        })}
+        </div>
         <br/>
           {this.state.limit === 2 &&
-          <div onClick={this.onLoadMore}>Load More ({this.state.pictures.length - this.state.limit})</div>
+          <div onClick={this.onLoadMore}>Load More  ({this.state.pictures.length - this.state.limit}) 	&#8964;</div>
           }
           {this.state.limit === this.state.pictures.length &&
-          <div onClick={this.onHide}>Hide</div>
+          <div onClick={this.onHide}>Hide &#8963;</div>
           }
           {this.state.clicked && 
-            <Modal photo={this.state.photo} close={this.closeModal} next={this.nextModal} previous={this.previousModal} max={this.state.max} modal={this.state.modal} />
+            <Modal photo={this.state.photo} close={this.closeModal} next={this.nextModal} previous={this.previousModal} max={this.state.max} modalPosition={this.state.modalPosition} />
           }
-          </div>
+        </div>
     );
   }
 }
