@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 
 class Modal extends React.Component {
@@ -34,7 +35,7 @@ class Modal extends React.Component {
           <img className='user-thumbnail' src={this.props.photo.user_pic} alt="user" height="35" width="35" />
           <div className="user-info">
             <div>{this.props.photo.user}</div>
-            <div className="timePassed">{this.props.photo.posted_on}</div>
+            <div className="timePassed">{moment.unix(this.props.photo.posted_on/1000).fromNow()}</div>
 
           </div>
             <hr width="275" className='line' />
