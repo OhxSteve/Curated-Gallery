@@ -28,29 +28,79 @@ class Modal extends React.Component {
       padding: 30,
     };
 
+    const rightArrowStyle = {
+      position: 'absolute',
+      top: '40%',
+      left: '83%',
+      fontSize: '30px',
+      color: 'aliceblue',
+    };
+
+    const leftArrowStyle = {
+      position: 'absolute',
+      top: '40%',
+      left: '15.5%',
+      fontSize: '30px',
+      color: 'aliceblue',
+    };
+
+    const closeStyle = {
+      position: 'absolute',
+      top: '10%',
+      left: '78%',
+      fontSize: '20px', 
+    };
+
+    const userInfoStyle = {
+      position: 'absolute',
+      fontFamily: 'freight-sans-pro, sans-serif',
+      fontSize: '15px',
+      top: '15%',
+      left: '60%',
+    };
+
+    const userThumbnailStyle = {
+      position: 'absolute',
+      borderRadius: '50%',
+      top: '15%',
+      left: '56%',
+    };
+
+    const lineStyle = {
+      position: 'absolute',
+      borderColor:'rgb(0,0,0,.05)',
+      top: '23%',
+      left: '56%',
+    };
+
+    const timePassedStyle = {
+      color: 'grey',
+      fontSize: '13px',
+    };
+
     return (
       <div className="backdrop" style={backdropStyle}>
         <div className="modal" style={modalStyle}>
           <img className='modal-pic' src={this.props.photo.photo} alt="shoe" height="400" width="400" />
-          <img className='user-thumbnail' src={this.props.photo.user_pic} alt="user" height="35" width="35" />
-          <div className="user-info">
+          <img className='user-thumbnail' style={userThumbnailStyle} src={this.props.photo.user_pic} alt="user" height="35" width="35" />
+          <div className="user-info" style={userInfoStyle}>
             <div>{this.props.photo.user}</div>
-            <div className="timePassed">{moment.unix(this.props.photo.posted_on/1000).fromNow()}</div>
+            <div className="timePassed" style={timePassedStyle}>{moment.unix(this.props.photo.posted_on/1000).fromNow()}</div>
 
           </div>
-            <hr width="275" className='line' />
+            <hr width="275" className='line' style={lineStyle} />
           <div className="buttons">            
             {this.props.modalPosition !== 0 && (
-            <span class="arrow left"onClick={this.props.previous} >
+            <span class="left-arrow" style={leftArrowStyle} onClick={this.props.previous} >
             &#x1438;
             </span>
             )}
             {this.props.modalPosition !== this.props.max && (
-            <span class="arrow right" onClick={this.props.next}>
+            <span class="right-arrow" style={rightArrowStyle} onClick={this.props.next}>
             &#x1433;
             </span>
             )}
-            <span className="close" onClick={this.props.close}>
+            <span className="close" style={closeStyle} onClick={this.props.close}>
             &#10005;
             </span>
           </div>
