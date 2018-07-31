@@ -10,7 +10,7 @@ class App extends React.Component {
       pictures: [],
       clicked: false,
       photo:{},
-      modal:0,
+      modalPosition:0,
       max:0,
       limit:2,  
     };
@@ -33,7 +33,7 @@ class App extends React.Component {
 
   handleClick = (photoID) => {
     this.setState({
-      modal:photoID,
+      modalPosition:photoID,
       photo:this.state.pictures[photoID],
       clicked:!this.state.clicked,
     })
@@ -46,18 +46,21 @@ class App extends React.Component {
   }
 
   nextModal = () => {
+    let modalPosition = this.state.modalPosition + 1;
+    let photo = this.state.pictures[modalPosition];
     this.setState({
-      modal:this.state.modal+=1,
-      photo:this.state.pictures[this.state.modal],
+      modalPosition,
+      photo,
     })
   }
 
   previousModal = () => {
+    let modalPosition = this.state.modalPosition - 1;
+    let photo = this.state.pictures[modalPosition];
     this.setState({
-      modal:this.state.modal-=1,
-      photo:this.state.pictures[this.state.modal],
+      modalPosition,
+      photo,
     })
-    console.log(this.state.modal, this.state.pictures)
   }
 
   onLoadMore = () => {
@@ -84,13 +87,13 @@ class App extends React.Component {
           </div>
         <br/>
           {this.state.limit === 2 &&
-          <div onClick={this.onLoadMore}>Load More ({this.state.pictures.length - this.state.limit})</div>
+          <div onClick={this.onLoadMore}>Load More  ({this.state.pictures.length - this.state.limit}) 	&#8964;</div>
           }
           {this.state.limit === this.state.pictures.length &&
-          <div onClick={this.onHide}>Hide</div>
+          <div onClick={this.onHide}>Hide &#8963;</div>
           }
           {this.state.clicked && 
-            <Modal photo={this.state.photo} close={this.closeModal} next={this.nextModal} previous={this.previousModal} max={this.state.max} modal={this.state.modal} />
+            <Modal photo={this.state.photo} close={this.closeModal} next={this.nextModal} previous={this.previousModal} max={this.state.max} modalPosition={this.state.modalPosition} />
           }
           </div>
     );

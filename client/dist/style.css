@@ -5,7 +5,7 @@ body{
   display:flex;
   justify-content: space-between;
   flex-wrap:wrap;
-  max-width:1300px;
+  max-width:820px;
 }
 
 .photo{
@@ -23,20 +23,12 @@ body{
 
 }
 
-/* .arrow{
-  border: solid black;
-  border-width: 0 5px 5px 0;
-  height:50px;
-  width:50px;
-  display: inline-block;
-  padding: 3px;
-} */
 
 .right {
   position: absolute;
   top:40%;
   left:83%;
-  font-size: 100px;
+  font-size: 30px;
   color: aliceblue
 }
 
@@ -44,7 +36,7 @@ body{
   position: absolute;
   top:40%;
   left:16%;
-  font-size: 100px;
+  font-size: 30px;
   color: aliceblue
 }
 
@@ -54,4 +46,32 @@ body{
   left:78%;
   font-size: 20px;
 
+}
+
+.user-info {
+  position: absolute;
+  font-family: "freight-sans-pro", sans-serif;
+  font-size: 15px;
+  top:15%;
+  left:60%;
+}
+
+.user-thumbnail {
+  position: absolute;
+  border-radius: 50%;
+  top:15%;
+  left:56%;
+}
+
+.line{
+  border-color:rgb(230, 230, 230);
+  background-color: rgb(230, 230, 230);
+  position: absolute;
+  top:22%;
+  left:56%;
+}
+
+.timePassed {
+  color:grey;
+  font-size:13px;
 }

@@ -28,7 +28,7 @@ class Photo extends React.Component {
     return (
 
       <div className="photo" onMouseEnter={this.handleHover} onMouseLeave={this.handleUnhover} onClick={() => this.props.click(this.props.id)}>
-        <img src={this.props.photo.photo} alt="shoe" height="612" width="612" />
+        <img src={this.props.photo.photo} alt="shoe" height="400" width="400" />
         <div>{this.props.photo.user}</div>
         <div>{this.props.photo.likes} Likes</div>
         {this.state.hovered && 
